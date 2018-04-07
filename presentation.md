@@ -19,6 +19,20 @@ Background
 - Quantitative Risk Modeler, Bank of the Ozarks, 2017-18
 - Senior Credit Data Analytics Officer, Bank of the Ozarks, 2018-present
 
+
+Job Opportunities in Banking
+========================================================
+
+### Dodd-Frank Act
+
+
+### Data and Statisitics 
+
+
+Stress Test Case Study
+========================================================
+
+
 Job Market Suggestions
 ========================================================
 
