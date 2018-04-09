@@ -1,7 +1,7 @@
 <style>
 .footer {
     color: black;
-    background: #FCDDE5;
+    background: white;
     position: fixed;
     top: 90%;
     text-align:center;
@@ -9,7 +9,7 @@
 }
 .midcenter {
     position: fixed;
-    top: 50%;
+    top: 75%;
     left: 50%;
 }
 .small-code pre code {
@@ -24,23 +24,46 @@
   word-wrap: normal;
   -moz-hyphens: none;
 }
+.exclaim .reveal .state-background {
+  background: white;
+} 
+
+.exclaim .reveal h1,
+.exclaim .reveal h2,
+.exclaim .reveal p {
+  color: black;
+}
+.section .reveal .state-background {
+    background: white;}
+.section .reveal h1,
+.section .reveal p {
+    color: black;
+    position: relative;
+    top: 4%;}
 </style>
 
 
-Applied Economics in Finance and Banking
+Applied Economics in Finance and Banking 
 ========================================================
 autosize: true
 transition: rotate
-
-Nick Lewellen <br>
+type:section
+<br>
+<br>
+<a href="https://www.linkedin.com/in/nick-lewellen-8b305472/">Nick Lewellen</a> <br>
 Senior Credit Data Analytics Officer <br>
 April 13th, 2018 <br>
 
 
-<div class="midcenter"><div style="margin-left:-0px;margin-top:-75px;"><img style="margin:0px; background-color:transparent; border:0px; box-shadow:none;" src="images/earth_cloth_300x300.png"></img></div></div>
+<div class = "footer">This presentation was created and reviewed solely by the author.
+Any mistakes or oversights are the fault of the author. Truly,
+his employer and collegues had nothing to do with this.</div>
+
+<div class="midcenter"><div style="margin-left:-0px;margin-top:-75px;"><img style="margin:0px; background-color:transparent; border:0px; box-shadow:none;" src="tulogo.jpg"></img></div></div>
 
 Background
 ========================================================
+type:exclaim
 
 ## Education
 
@@ -65,6 +88,8 @@ mentions the job market, start over.
 ## Where?
 
 - Better schools are preferred. 
+    - If Master's, then name brand.
+    - If PhD, experience and environmen.
 - Go somewhere you'll be happy. 
 - Consider online or distance programs. 
     - Often cheaper
@@ -78,22 +103,27 @@ mentions the job market, start over.
 
 Graduate Education pt. 2
 ========================================================
-
-## Don't take advice on graduate school (or anything else) too seriously!
+<br>
+<b>Don't take advice on graduate school (or anything else) too seriously!</b>
+<br>
+- Advice is always based on personal experience. My experience is not your experience.
 
 - You have your own tastes and preferences, and you know them better than I do. 
 
 - It's really hard to make a life ruining decision right after college. 
 
-Duke
+My Experience at Duke
 ========================================================
-
-
+<br>
+- Math
+- Most econ programs are very structured.
+- Augment your education to your interests and needs. 
 
 
 
 Job Opportunities in Banking
 ========================================================
+<br>
 
 ## Data and Statisitics 
 
@@ -101,12 +131,14 @@ Job Opportunities in Banking
 - The analytics revolution in commercial banking
 - Economists are suited to the task
 
+<br>
 ## Dodd-Frank Act
 
-- DFA (i.e., DFAST) created an even greater need for 
+- The Dodd Frank Act Stress Testing (i.e., DFAST) created an even greater need for 
 economists, data scientists and analytics experts in banking.
-
-
+- Despite what you hear, the industry has seemed to welcome the influx of talent.
+- Even if DFAST is repealed, Stress Testing and economic analysis still has a place in
+banking.
 
 Stress Test Case Study
 ========================================================
@@ -114,10 +146,28 @@ Stress Test Case Study
 
 Job Market Suggestions
 ========================================================
-
+<br>
+- Since Nov. 2017, I have interviewed dozens of people for entry
+level and senior level positions at BOTO. 
 - Mistake free resume and cover letters. 
 - Do your research!
 - Skills:
     - SQL (must!)
     - R or Python
     - SAS, Stata, Eviews, etc.
+- Be proactive
+- Show don't tell 
+
+
+Questions and Follow Up
+========================================================
+<br>
+## Questions?
+<br>
+
+## Contact
+
+Linkedin: <a href="https://www.linkedin.com/in/nick-lewellen-8b305472/">Nick Lewellen</a> <br> 
+Email: <a href="nlewellen@bankozarks.com">nlewellen@bankozarks.com</a> <br>
+Phone: 501-352-8985 <br>
+ 
