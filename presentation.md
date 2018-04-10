@@ -1,3 +1,5 @@
+
+
 <style>
 .footer {
     color: black;
@@ -55,10 +57,6 @@ Senior Credit Data Analytics Officer <br>
 April 13th, 2018 <br>
 
 
-<div class = "footer">This presentation was created and reviewed solely by the author.
-Any mistakes or oversights are the fault of the author. Truly,
-his employer and collegues had nothing to do with this.</div>
-
 <div class="midcenter"><div style="margin-left:-0px;margin-top:-75px;"><img style="margin:0px; background-color:transparent; border:0px; box-shadow:none;" src="tulogo.jpg"></img></div></div>
 
 Background
@@ -96,14 +94,16 @@ mentions the job market, start over.
     - Allow you to work 
     - Excellent Universities (Hopkins, GA Tech, Penn State)
 
-## When?
-
-- There is no good answer for this. 
-- Right after college or a few years after can both work. 
+ 
 
 Graduate Education pt. 2
 ========================================================
-<br>
+
+## When?
+
+- There is no good answer for this. 
+- Right after college or a few years after can both work.
+
 <b>Don't take advice on graduate school (or anything else) too seriously!</b>
 <br>
 - Advice is always based on personal experience. My experience is not your experience.
@@ -118,12 +118,11 @@ My Experience at Duke
 - Math
 - Most econ programs are very structured.
 - Augment your education to your interests and needs. 
-
+- It's going to be hard. 
 
 
 Job Opportunities in Banking
 ========================================================
-<br>
 
 ## Data and Statisitics 
 
@@ -131,7 +130,7 @@ Job Opportunities in Banking
 - The analytics revolution in commercial banking
 - Economists are suited to the task
 
-<br>
+
 ## Dodd-Frank Act
 
 - The Dodd Frank Act Stress Testing (i.e., DFAST) created an even greater need for 
@@ -144,9 +143,11 @@ Stress Test Case Study
 ========================================================
 
 
+<img src="presentation-figure/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" angle=90 style="display: block; margin: auto;" />
+
 Job Market Suggestions
 ========================================================
-<br>
+
 - Since Nov. 2017, I have interviewed dozens of people for entry
 level and senior level positions at BOTO. 
 - Mistake free resume and cover letters. 

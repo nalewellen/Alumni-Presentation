@@ -1,3 +1,5 @@
+
+
 <style>
 .footer {
     color: black;
@@ -55,10 +57,6 @@ Senior Credit Data Analytics Officer <br>
 April 13th, 2018 <br>
 
 
-<div class = "footer">This presentation was created and reviewed solely by the author.
-Any mistakes or oversights are the fault of the author. Truly,
-his employer and collegues had nothing to do with this.</div>
-
 <div class="midcenter"><div style="margin-left:-0px;margin-top:-75px;"><img style="margin:0px; background-color:transparent; border:0px; box-shadow:none;" src="tulogo.jpg"></img></div></div>
 
 Background
@@ -96,14 +94,16 @@ mentions the job market, start over.
     - Allow you to work 
     - Excellent Universities (Hopkins, GA Tech, Penn State)
 
-## When?
-
-- There is no good answer for this. 
-- Right after college or a few years after can both work. 
+ 
 
 Graduate Education pt. 2
 ========================================================
-<br>
+
+## When?
+
+- There is no good answer for this. 
+- Right after college or a few years after can both work.
+
 <b>Don't take advice on graduate school (or anything else) too seriously!</b>
 <br>
 - Advice is always based on personal experience. My experience is not your experience.
@@ -118,12 +118,11 @@ My Experience at Duke
 - Math
 - Most econ programs are very structured.
 - Augment your education to your interests and needs. 
-
+- It's going to be hard. 
 
 
 Job Opportunities in Banking
 ========================================================
-<br>
 
 ## Data and Statisitics 
 
@@ -131,7 +130,7 @@ Job Opportunities in Banking
 - The analytics revolution in commercial banking
 - Economists are suited to the task
 
-<br>
+
 ## Dodd-Frank Act
 
 - The Dodd Frank Act Stress Testing (i.e., DFAST) created an even greater need for 
@@ -142,11 +141,27 @@ banking.
 
 Stress Test Case Study
 ========================================================
+```{r, include=TRUE, echo=FALSE}
+library(tidyverse)
+data <- read_csv("Final Balances.csv")%>%
+    select(file_date, BAL_1c)%>%
+    mutate(`SFR Loan` = BAL_1c, `SFR Loan Growth Rate` = (diff(BAL_1c)/lag(BAL_1c)),
+           Date = as.Date(file_date))
+```
 
+```{r, echo=FALSE, fig.align='center',out.extra='angle=90',}
+ggplot(data, aes(x = Date, y = `SFR Loan`))+
+    geom_line(color = "Blue", size = 1)+
+    scale_y_continuous(name = "Single Family Residential Loan Balance (1,000)", labels = scales::dollar)+
+    scale_x_date(date_labels = "%Y", date_breaks = "12 months",
+                 expand = c(0,0))+ 
+    theme(axis.text.x = element_text(angle=45, vjust = 0.5))+
+    ggtitle("Bank of the Ozarks Total Single Family Residential Loan Balance")
+```
 
 Job Market Suggestions
 ========================================================
-<br>
+
 - Since Nov. 2017, I have interviewed dozens of people for entry
 level and senior level positions at BOTO. 
 - Mistake free resume and cover letters. 
