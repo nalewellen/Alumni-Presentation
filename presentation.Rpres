@@ -141,6 +141,13 @@ banking.
 
 Stress Test Case Study
 ========================================================
+
+- If the economy enters a recession, what happens to the 
+bank's assets, deposits, etc.?
+- The goal is to produce financial statements and projects
+based on three scenarios: baseline, adverse, severely adverse.
+- Example: Single Family Residential balances
+
 ```{r, include=TRUE, echo=FALSE}
 library(tidyverse)
 data <- read_csv("Final Balances.csv")%>%
@@ -149,15 +156,160 @@ data <- read_csv("Final Balances.csv")%>%
            Date = as.Date(file_date))
 ```
 
-```{r, echo=FALSE, fig.align='center',out.extra='angle=90',}
+```{r, echo=FALSE, fig.align='center',out.extra='angle=90', fig.height = 8, fig.width = 12}
 ggplot(data, aes(x = Date, y = `SFR Loan`))+
     geom_line(color = "Blue", size = 1)+
     scale_y_continuous(name = "Single Family Residential Loan Balance (1,000)", labels = scales::dollar)+
     scale_x_date(date_labels = "%Y", date_breaks = "12 months",
                  expand = c(0,0))+ 
     theme(axis.text.x = element_text(angle=45, vjust = 0.5))+
+    theme_minimal()+
     ggtitle("Bank of the Ozarks Total Single Family Residential Loan Balance")
 ```
+
+Stress Test Case Study pt. 2
+========================================================
+
+- Initial questions:
+    - What happened during other recessions?
+    - What factors contributed to the bank's growth and 
+    contraction? 
+
+```{r, include=TRUE, echo=FALSE, cache=FALSE}
+library(tidyverse)
+data <- read_csv("Final Balances.csv")%>%
+    select(file_date, BAL_1c)%>%
+    mutate(`SFR Loan` = BAL_1c, `SFR Loan Growth Rate` = (diff(BAL_1c)/lag(BAL_1c)),
+           Date = as.Date(file_date))
+```
+
+```{r, echo=FALSE, fig.align='center',out.extra='angle=90', fig.height = 8, fig.width = 12}
+dates <- c("2003-06-30",
+            "2010-03-31",
+            "2010-09-30",
+            "2010-12-31",
+            "2011-03-31",
+            "2011-06-30",
+            "2012-12-31",
+            "2013-09-30",
+            "2014-03-31",
+            "2014-06-30",
+            "2015-03-31",
+            "2015-09-30",
+            "2016-09-30")
+
+dates <- as.Date(dates)
+
+ggplot(data, aes(x = Date, y = `SFR Loan`))+
+    geom_line(color = "Blue", size = 1)+
+    geom_vline(xintercept=dates)+
+    scale_y_continuous(name = "Single Family Residential Loan Balance (1,000)", labels = scales::dollar)+
+    scale_x_date(date_labels = "%Y", date_breaks = "12 months",
+                 expand = c(0,0))+ 
+    theme(axis.text.x = element_text(angle=45, vjust = 0.5))+
+    theme_minimal()+
+    ggtitle("Bank of the Ozarks Total Single Family Residential Loan Balance")
+```
+
+Stress Test Case Study pt. 3
+========================================================
+
+- The DFAST problem is in changes. 
+- BOTO grew from acquisitions. 
+
+```{r, include=TRUE, echo=FALSE, cache=FALSE}
+library(tidyverse)
+data <- read_csv("Final Balances.csv")%>%
+    select(file_date, BAL_1c)%>%
+    mutate(`SFR Loan` = BAL_1c, `SFR Loan Growth Rate` = (BAL_1c - lag(BAL_1c))/lag(BAL_1c, n = 1),
+           Date = as.Date(file_date))
+```
+
+```{r, echo=FALSE, fig.align='center',out.extra='angle=90', fig.height = 8, fig.width = 12}
+dates <- c("2003-06-30",
+            "2010-03-31",
+            "2010-09-30",
+            "2010-12-31",
+            "2011-03-31",
+            "2011-06-30",
+            "2012-12-31",
+            "2013-09-30",
+            "2014-03-31",
+            "2014-06-30",
+            "2015-03-31",
+            "2015-09-30",
+            "2016-09-30")
+
+dates <- as.Date(dates)
+
+ggplot(data, aes(x = Date, y = `SFR Loan Growth Rate`))+
+    geom_line(color = "Blue", size = 1)+
+    geom_vline(xintercept=dates)+
+    scale_y_continuous(name = "Single Family Residential Loan Balance (1,000)", labels = scales::percent)+
+    scale_x_date(date_labels = "%Y", date_breaks = "12 months",
+                 expand = c(0,0))+ 
+    theme(axis.text.x = element_text(angle=45, vjust = 0.5))+
+    theme_minimal()+
+    ggtitle("Bank of the Ozarks Total Single Family Residential Loan Balance")
+
+```
+
+- Include binary variables for acquisitions
+
+Stress Test Case Study pt. 4
+========================================================
+
+- The DFAST problem is in changes. 
+- BOTO grew from acquisitions. 
+
+```{r, include=TRUE, echo=FALSE, cache=FALSE}
+library(tidyverse)
+library(digest)
+library(jsonlite)
+library(tidyjson)
+
+data <- read_csv("Final Balances.csv")%>%
+    select(file_date, BAL_1c)%>%
+    mutate(`SFR Loan` = BAL_1c, `SFR Loan Growth Rate` = (BAL_1c - lag(BAL_1c))/lag(BAL_1c, n = 1),
+           Date = as.Date(file_date))
+
+macro <- read_csv("households.csv")
+
+
+```
+
+```{r, echo=FALSE, fig.align='center',out.extra='angle=90', fig.height = 8, fig.width = 12}
+dates <- c("2003-06-30",
+            "2010-03-31",
+            "2010-09-30",
+            "2010-12-31",
+            "2011-03-31",
+            "2011-06-30",
+            "2012-12-31",
+            "2013-09-30",
+            "2014-03-31",
+            "2014-06-30",
+            "2015-03-31",
+            "2015-09-30",
+            "2016-09-30")
+
+dates <- as.Date(dates)
+
+ggplot(data, aes(x = Date, y = `SFR Loan Growth Rate`))+
+    geom_line(color = "Blue", size = 1)+
+    geom_vline(xintercept=dates)+
+    scale_y_continuous(name = "Single Family Residential Loan Balance (1,000)", labels = scales::percent)+
+    scale_x_date(date_labels = "%Y", date_breaks = "12 months",
+                 expand = c(0,0))+ 
+    theme(axis.text.x = element_text(angle=45, vjust = 0.5))+
+    theme_minimal()+
+    ggtitle("Bank of the Ozarks Total Single Family Residential Loan Balance")
+
+```
+
+- Include binary variables for acquisitions
+
+
 
 Job Market Suggestions
 ========================================================

@@ -142,8 +142,53 @@ banking.
 Stress Test Case Study
 ========================================================
 
+- If the economy enters a recession, what happens to the 
+bank's assets, deposits, etc.?
+- The goal is to produce financial statements and projects
+based on three scenarios: baseline, adverse, severely adverse.
+- Example: Single Family Residential balances
+
+
 
 <img src="presentation-figure/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" angle=90 style="display: block; margin: auto;" />
+
+Stress Test Case Study pt. 2
+========================================================
+
+- Initial questions:
+    - What happened during other recessions?
+    - What factors contributed to the bank's growth and 
+    contraction? 
+
+
+
+<img src="presentation-figure/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" angle=90 style="display: block; margin: auto;" />
+
+Stress Test Case Study pt. 3
+========================================================
+
+- The DFAST problem is in changes. 
+- BOTO grew from acquisitions. 
+
+
+
+<img src="presentation-figure/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" angle=90 style="display: block; margin: auto;" />
+
+- Include binary variables for acquisitions
+
+Stress Test Case Study pt. 4
+========================================================
+
+- The DFAST problem is in changes. 
+- BOTO grew from acquisitions. 
+
+
+
+<img src="presentation-figure/unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" angle=90 style="display: block; margin: auto;" />
+
+- Include binary variables for acquisitions
+
+
 
 Job Market Suggestions
 ========================================================
