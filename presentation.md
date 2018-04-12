@@ -87,7 +87,7 @@ mentions the job market, start over.
 
 - Better schools are preferred. 
     - If Master's, then name brand.
-    - If PhD, experience and environmen.
+    - If PhD, experience and environment.
 - Go somewhere you'll be happy. 
 - Consider online or distance programs. 
     - Often cheaper
@@ -174,17 +174,35 @@ Stress Test Case Study pt. 3
 
 <img src="presentation-figure/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" angle=90 style="display: block; margin: auto;" />
 
-- Include binary variables for acquisitions
+- We have to control for acquisitions. 
+- Macroeconomic variables to contorl for the relationship
+between the bank and the macroeconomic environment. 
 
 Stress Test Case Study pt. 4
 ========================================================
 
-- The DFAST problem is in changes. 
-- BOTO grew from acquisitions. 
+Regression equation: 
+
+$$% \delta Balance__t= \beta_0+ \beta_1 RVBacq+ \beta_2 UNBacq+ \beta_3 2010Q3acq+ \beta_4 CSBacq +\beta_5 2011Q2acq +\beta_6 GBIacq + \beta_7 FNBacq + \beta_8 SBIacq+ \beta_9 IBCacq + \beta_10 BCCacq+ \beta_11 2016Q3acq+ \beta_12 ∆Households+ \epsilon$$
 
 
 
-<img src="presentation-figure/unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" angle=90 style="display: block; margin: auto;" />
+
+
+|                      |   Estimate| Std. Error|    t value| Pr(>&#124;t&#124;)|
+|:---------------------|----------:|----------:|----------:|------------------:|
+|(Intercept)           | -0.0100682|  0.0126180| -0.7979218|          0.4283477|
+|RVBacq                |  0.1509399|  0.0279752|  5.3954812|          0.0000015|
+|UNBacq                |  0.1342309|  0.0299697|  4.4788902|          0.0000383|
+|Q3_2010acq            |  0.2361953|  0.0284871|  8.2912927|          0.0000000|
+|CSBacq                |  0.0399778|  0.0288719|  1.3846621|          0.1717477|
+|Q2_2011acq            |  0.1682160|  0.0285789|  5.8860210|          0.0000002|
+|FNBSacq               |  0.2304535|  0.0278235|  8.2827037|          0.0000000|
+|SBIacq                |  0.3260567|  0.0279701| 11.6573499|          0.0000000|
+|IBCacq                |  0.0513208|  0.0279482|  1.8362833|          0.0717228|
+|BCCacq                |  0.1487508|  0.0278336|  5.3442824|          0.0000018|
+|Q3_2016acq            |  0.7464250|  0.0280688| 26.5926786|          0.0000000|
+|Houshold_baseline_dif |  0.0000457|  0.0000411|  1.1096126|          0.2719941|
 
 - Include binary variables for acquisitions
 

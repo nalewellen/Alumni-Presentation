@@ -87,7 +87,7 @@ mentions the job market, start over.
 
 - Better schools are preferred. 
     - If Master's, then name brand.
-    - If PhD, experience and environmen.
+    - If PhD, experience and environment.
 - Go somewhere you'll be happy. 
 - Consider online or distance programs. 
     - Often cheaper
@@ -245,7 +245,7 @@ dates <- as.Date(dates)
 ggplot(data, aes(x = Date, y = `SFR Loan Growth Rate`))+
     geom_line(color = "Blue", size = 1)+
     geom_vline(xintercept=dates)+
-    scale_y_continuous(name = "Single Family Residential Loan Balance (1,000)", labels = scales::percent)+
+    scale_y_continuous(name = "Percent Growth of Single Family Residential Loan Balances", labels = scales::percent)+
     scale_x_date(date_labels = "%Y", date_breaks = "12 months",
                  expand = c(0,0))+ 
     theme(axis.text.x = element_text(angle=45, vjust = 0.5))+
@@ -254,13 +254,17 @@ ggplot(data, aes(x = Date, y = `SFR Loan Growth Rate`))+
 
 ```
 
-- Include binary variables for acquisitions
+- We have to control for acquisitions. 
+- Macroeconomic variables to contorl for the relationship
+between the bank and the macroeconomic environment. 
 
 Stress Test Case Study pt. 4
 ========================================================
 
-- The DFAST problem is in changes. 
-- BOTO grew from acquisitions. 
+Regression equation: 
+
+$$% \delta Balance__t= \beta_0+ \beta_1 RVBacq+ \beta_2 UNBacq+ \beta_3 2010Q3acq+ \beta_4 CSBacq +\beta_5 2011Q2acq +\beta_6 GBIacq + \beta_7 FNBacq + \beta_8 SBIacq+ \beta_9 IBCacq + \beta_10 BCCacq+ \beta_11 2016Q3acq+ \beta_12 ∆Households+ \epsilon$$
+
 
 ```{r, include=TRUE, echo=FALSE, cache=FALSE}
 library(tidyverse)
@@ -273,37 +277,26 @@ data <- read_csv("Final Balances.csv")%>%
     mutate(`SFR Loan` = BAL_1c, `SFR Loan Growth Rate` = (BAL_1c - lag(BAL_1c))/lag(BAL_1c, n = 1),
            Date = as.Date(file_date))
 
-macro <- read_csv("households.csv")
+macro <- read_csv("households.csv")%>%
+    mutate(Date = as.Date(Date, format = " %m/%d/%Y"))
+
+model <- inner_join(data, macro, by="Date")%>%
+    mutate(Houshold_baseline_dif = FHHOLDQ_FEDB.IUSA - lag(FHHOLDQ_FEDB.IUSA),
+           Houshold_adverse_dif = FHHOLDQ_FEDM.IUSA - lag(FHHOLDQ_FEDM.IUSA),
+           Houshold_sadverse_dif = FHHOLDQ_FEDS.IUSA - lag(FHHOLDQ_FEDS.IUSA))
+
+model_out <- lm(`SFR Loan Growth Rate` ~ RVBacq + UNBacq + Q3_2010acq + CSBacq +
+                Q2_2011acq + FNBSacq + SBIacq + IBCacq + BCCacq + Q3_2016acq + 
+                Houshold_baseline_dif, data = model)
 
 
 ```
 
 ```{r, echo=FALSE, fig.align='center',out.extra='angle=90', fig.height = 8, fig.width = 12}
-dates <- c("2003-06-30",
-            "2010-03-31",
-            "2010-09-30",
-            "2010-12-31",
-            "2011-03-31",
-            "2011-06-30",
-            "2012-12-31",
-            "2013-09-30",
-            "2014-03-31",
-            "2014-06-30",
-            "2015-03-31",
-            "2015-09-30",
-            "2016-09-30")
+library(stargazer)
+library(xtable)
 
-dates <- as.Date(dates)
-
-ggplot(data, aes(x = Date, y = `SFR Loan Growth Rate`))+
-    geom_line(color = "Blue", size = 1)+
-    geom_vline(xintercept=dates)+
-    scale_y_continuous(name = "Single Family Residential Loan Balance (1,000)", labels = scales::percent)+
-    scale_x_date(date_labels = "%Y", date_breaks = "12 months",
-                 expand = c(0,0))+ 
-    theme(axis.text.x = element_text(angle=45, vjust = 0.5))+
-    theme_minimal()+
-    ggtitle("Bank of the Ozarks Total Single Family Residential Loan Balance")
+kable(xtable(model_out), caption = "Regression Model Results", caption.placement = 'top')
 
 ```
 
